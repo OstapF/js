@@ -244,3 +244,124 @@ let coursesArray = [
 // // --написати пошук всіх об'єктів, в який в modules є docker
 // let filter=coursesArray.filter((cours)=>cours.modules.includes('docker'))
 // console.log(filter);
+
+//
+//
+// - Знайти та вивести довижину настипних стрінгових значень
+// 'hello world', 'lorem ipsum', 'javascript is cool'
+// let str='hello world';
+// let st2='lorem ipsum';
+// let st3='javascript is cool';
+// console.log(str.length)
+// - Перевести до великого регістру наступні стрінгові значення
+// 'hello world', 'lorem ipsum', 'javascript is cool'
+// let str='hello world';
+// let st2='lorem ipsum';
+// let st3='javascript is cool';
+// console.log(str.toUpperCase())
+// - Перевести до нижнього регістру настипні стрінгові значення
+// 'HELLO WORLD', 'LOREM IPSUM', 'JAVASCRIPT IS COOL'
+// let str='HELLO WORLD';
+// let st2='lorem ipsum';
+// let st3='javascript is cool';
+// console.log(str.toLowerCase())
+// - Є "брудна" стрінга let str = ' dirty string   ' . Почистити її від зайвих пробілів.
+// let str=' dirty string   ';
+// console.log(str.replaceAll(' ',''))
+// - Напишіть функцію stringToarray(str), яка перетворює рядок на масив слів.
+//     let str = 'Ревуть воли як ясла повні';
+// let arr = stringToarray(str); ['Ревуть', 'воли', 'як', 'ясла', 'повні']
+// let str = 'Ревуть воли як ясла повні';
+// function adapter(a){
+//    return a.split(' ')
+// }
+//
+// console.log(adapter(str));
+// - є масив чисел [10,8,-7,55,987,-1011,0,1050,0] . за допомоги map  перетворити всі об'єкти в масиві на стрінгові.
+
+// let numbers=[10,8,-7,55,987,-1011,0,1050,0];
+// let map=numbers.map(String);
+// console.log(map);
+
+// - створити функцію sortNums(direction), яка прймає масив чисел, та сортує його від більшого до меньшого, або навпаки в залежності від значення аргументу direction.
+//     let nums = [11,21,3];
+// sortNums(nums,'ascending') // [3,11,21]
+// sortNums(nums,'descending') // [21,11,3]
+
+// function sortNums(nums,direction) {
+//     if (direction === 'ascending') {
+//         return nums.slice().sort((a, b) => a - b)
+//     } else if (direction === 'descending') {
+//         return nums.slice().sort((a, b) => b - a)
+//     }
+// }
+// let nums=[11,21,3];
+// console.log(sortNums(nums, 'ascending'));
+// console.log(sortNums(nums, 'descending'));
+
+// ==========================
+// - є масив
+// let coursesAndDurationArray = [
+//     {title: 'JavaScript Complex', monthDuration: 5},
+//     {title: 'Java Complex', monthDuration: 6},
+//     {title: 'Python Complex', monthDuration: 6},
+//     {title: 'QA Complex', monthDuration: 4},
+//     {title: 'FullStack', monthDuration: 7},
+//     {title: 'Frontend', monthDuration: 4}
+// ];
+// -- відсортувати його за спаданням за monthDuration
+// let sort= coursesAndDurationArray.sort((a,b)=>a.monthDuration-b.monthDuration);
+// console.log(sort);
+
+// -- відфільтрувати , залишивши тільки курси з тривалістю більше 5 місяців
+// let filter=coursesAndDurationArray.filter((month)=>month.monthDuration>5)
+// console.log(filter);
+// -- за допомоги map перетворити кожен елемент на наступний тип {id,title,monthDuration}
+// let map=coursesAndDurationArray.map((a,index)=>({
+//     title:a.title,month:a.monthDuration,id:index+1
+// }))
+// console.log(map);
+// =========================
+
+// - знайти піковий туз
+// let filter=deck.filter((a)=>a.cardSuit==='spade'&&a.value==='ace')
+// console.log(filter);
+// - всі шістки
+// let filter=deck.filter((a)=>a.value==='6');
+// console.log(filter);
+// - всі червоні карти
+// let filter=deck.filter((a)=>a.color==='red');
+// console.log(filter);
+// - всі буби
+// let filter=deck.filter((a)=>a.cardSuit==='diamond');
+// console.log(filter);
+// // - всі трефи від 9 та більше
+// let filter=deck.filter((a)=>a.cardSuit==='clubs');
+// let splice=filter.splice(3)
+// console.log(splice);
+// =========================
+//
+//     Взяти описану колоду карт, та за допомоги reduce упакувати всі карти по "мастях" в об'єкт
+//
+// let reduce=deck.reduce((a,card)=>{
+//     if (card.cardSuit==='heart'){
+//         a[0].push(card)
+//     }else if (card.cardSuit==='diamond'){
+//         a[1].push(card)
+//     }else if(card.cardSuit==='clubs'){
+//         a[2].push(card)
+//     }else if(card.cardSuit==='spade'){
+//         a[3].push(card)
+//     }
+//     return a
+// },[[],[],[],[]])
+// console.log(reduce);
+
+// =========================
+//     взяти з arrays.js (який лежить в папці 2023 plan) масив coursesArray
+// --написати пошук всіх об'єктів, в який в modules є sass
+let filter= coursesArray.filter((a)=>a.modules.includes('sass'))
+console.log(filter);
+// --написати пошук всіх об'єктів, в який в modules є docker
+let filter1=coursesArray.filter((a)=>a.modules.includes('docker'))
+console.log(filter1)
