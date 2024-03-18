@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="myForm" name="form1">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br><br>
+
+    <label for="surname">Surname:</label>
+    <input type="text" id="surname" name="surname"><br><br>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age"><br><br>
+    <button id="submitButton">Submit</button>
+</form>
+<hr>
+<div id="text">Це довільний елемент з id="text".</div>
+<button id="hideButton">Приховати елемент</button>
+<hr>
+<script>
+    // Стоврити форму з трьома полями для name,surname,age та кнопкою. При натисканні на кнопку зчитати данні з полів, та вивести об'єкт в документ. Іншими словами : заповниои форму, натиснули кнопку, під формою з'явився блок з вашим об'єктом
+    // document.getElementById('submitButton').addEventListener('click',function (){
+    //     event.preventDefault();
+    //     let userName = document.getElementById('name').value;
+    //     let surName = document.getElementById('surname').value;
+    //     let age = document.getElementById('age').value;
+    //
+    //
+    //     let outputDiv = document.createElement("div");
+    //     outputDiv.innerText = `Name: `+userName+` Surname: `+surName+` Age: `+age;
+    //     document.body.appendChild(outputDiv)
+    // })
+    // ==========================
+
+    // є сторінка, на якій є блок, я кому знаходиьтся цифра. написати код, який при кожному перезавантажені сторінки буде додавати до неї +1
+
+    // let div = document.createElement('div');
+    // document.body.appendChild(div)
+    // let a = localStorage.getItem('refresh');
+    // if (a) {
+    //     a = parseInt(a) + 1;
+    // }
+    // div.innerText = `refreshCount = ${a}`;
+    // localStorage.setItem('refresh', a.toString());
+    // ==========================
+
+    // Є сторінка index.html (назва довільна), при відвідуванні якої в локальне сховще, в масив sessions зберігається інформація про дату та час відвідування сторінки. Є ще сторінка sessions.html (назва довільна), при відвідуванні якої потрібно відмалювати всю інформацію про відвідування сторінки index.html. Інфу НЕ виводити в консоль, а побудувати дом структуру під кожну сессію
+    // let date = new Date();
+    // let sessions = JSON.parse(localStorage.getItem('date')) || [];
+    // sessions.push(date.toString());
+    // localStorage.setItem('date', JSON.stringify(sessions))
+
+    // =========================
+    //     зробити масив на 100 об'єктів та дві кнопки prev next
+    // при завантажені сторінки з'являються перші 10 об'єктів.
+    //     При натисканні next виводяться настпні 10 об'єктів
+    // При натисканні prev виводяться попередні 10 об'єктів
+    //??????????????????????????????????????????????????
+    // - Створити довільний елемент з id = text та створити кнопку.Використовуючи JavaScript, зробіть так, щоб при натисканні на кнопку зникав елемент з id="text".
+    document.getElementById('hideButton').addEventListener('click',function (){
+        let element=document.getElementById('text')
+        if (element.style.display!=='none'){
+            element.style.display='none'
+        }else {
+            element.style.display='block'
+        }
+    })
+
+    // - створити інпут який приймає вік людини та кнопку яка підтверджує дію.При натисканні на кнопку зчитати інформацію з інпуту та перевірити вік чи меньше він ніж 18, та повідомити про це користувача
+    let divInput=document.createElement("div");
+    let input=document.createElement("input");
+    let btn=document.createElement("button");
+    input.type="number"
+    btn.textContent='Перевірка'
+    document.body.appendChild(divInput)
+    divInput.append(input,btn)
+    btn.addEventListener('click',function (){
+        let inputText=input.value
+        if (inputText<18){
+            let divOut=document.createElement("div");
+            divOut.textContent=`Ви ще неповнолітній. Доступ обмежено.`
+            divInput.appendChild(divOut)
+        }else {
+            let noDiv=document.createElement("div");
+            noDiv.textContent=`Ви повнолітній. Доступ дозволено.`
+            divInput.appendChild(noDiv)
+        }
+    })
+
+
+
+    // *** Створити 3 інпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.
+    //     При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.
+    // (Додатковачастина для завдання)
+    //
+    // *** (подібне було вище, але...будьте уважні в другій частині) створити сторінку з довільним блоком, в середині якого є значення "100грн"
+    // при перезавантаженні сторінки до значаення додається по 10грн, але !!!
+    //     зміна ціни відбувається тільки на перезавантаження, які відбулись пізніше ніж 10 секунд після попереднього.
+    //     При перезавантаженні, яке відбулось раніше ніж минуло 10 секунд - нічого не відбувається
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sessions Page</title>
+</head>
+<body>
+<h1>Sessions History</h1>
+<div id="sessionsContainer"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded',function (){
+    let sessions=JSON.parse(localStorage.getItem('date'));
+    let sessionsContainer=document.getElementById('sessionsContainer');
+    if (sessions){
+        sessions.forEach(function (session){
+            let sessionElement=document.createElement('div')
+            sessionElement.innerText=`Дата та час відвідування: ${session}`;
+            sessionsContainer.appendChild(sessionElement)
+        })
+    }else {
+        let noSession=document.createElement('div');
+        noSession.innerText='Немає даних про сесії.';
+        sessionsContainer.appendChild(noSession)
+    }
+})
+</script>
+</body>
+</html>
