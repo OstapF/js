@@ -58,44 +58,114 @@
     // при завантажені сторінки з'являються перші 10 об'єктів.
     //     При натисканні next виводяться настпні 10 об'єктів
     // При натисканні prev виводяться попередні 10 об'єктів
-    //??????????????????????????????????????????????????
-    // - Створити довільний елемент з id = text та створити кнопку.Використовуючи JavaScript, зробіть так, щоб при натисканні на кнопку зникав елемент з id="text".
-    document.getElementById('hideButton').addEventListener('click',function (){
-        let element=document.getElementById('text')
-        if (element.style.display!=='none'){
-            element.style.display='none'
-        }else {
-            element.style.display='block'
+    let users = [];
+    for (let i = 0; i < 100; i++) {
+        users.push(`User ${i + 1}`);
+    }
+    let div=document.createElement('div');
+    let divBtn=document.createElement('div');
+    let btnPrev=document.createElement('button');
+    let btnNext=document.createElement('button');
+    document.body.appendChild(div);
+    document.body.appendChild(divBtn);
+    divBtn.append(btnNext,btnPrev)
+    btnPrev.textContent='PREV';
+    btnNext.textContent='NEXT';
+    let start=0;
+    let step=10;
+    let limit=start+step
+    btnNext.addEventListener('click',function(){
+        let divUsersToRemove = div.querySelectorAll('div');
+        divUsersToRemove.forEach((divUser, index) => {
+            if (index < step) {
+                div.removeChild(divUser);
+            }
+        });
+        for (let i = start; i < limit; i++) {
+            if (i < users.length) {
+                let divUsers = document.createElement('div');
+                divUsers.textContent = users[i]
+                div.appendChild(divUsers)
+            }
         }
+        start = limit
+        limit = limit + step
     })
+    // btnPrev.addEventListener('click',function(){
+    //     let divUsersToRemove = div.querySelectorAll('div');
+    //     divUsersToRemove.forEach((divUser, index) => {
+    //         if (index < step) {
+    //             div.removeChild(divUser);
+    //         }
+    //     });
+    //     start -= limit
+    //     limit = start + step
+    //     for (let i = start; i < limit; i++) {
+    //         if (i < users.length) {
+    //             let divUsers = document.createElement('div');
+    //             divUsers.textContent = users[i]
+    //             div.appendChild(divUsers)
+    //         }
+    //     }
+    //
+    // })
+
+    btnPrev.addEventListener('click', function() {
+        if (start >= step) {
+            for (let i = 0; i < step; i++) {
+                div.removeChild(div.lastChild);
+            }
+
+            start -= step;
+            limit = start + step;
+
+            for (let i = start; i < limit; i++) {
+                if (i < users.length) {
+                    let divUsers = document.createElement('div');
+                    divUsers.textContent = users[i];
+                    div.appendChild(divUsers);
+                }
+            }
+        }
+    });
+
+    // - Створити довільний елемент з id = text та створити кнопку.Використовуючи JavaScript, зробіть так, щоб при натисканні на кнопку зникав елемент з id="text".
+    // document.getElementById('hideButton').addEventListener('click',function (){
+    //     let element=document.getElementById('text')
+    //     if (element.style.display!=='none'){
+    //         element.style.display='none'
+    //     }else {
+    //         element.style.display='block'
+    //     }
+    // })
 
     // - створити інпут який приймає вік людини та кнопку яка підтверджує дію.При натисканні на кнопку зчитати інформацію з інпуту та перевірити вік чи меньше він ніж 18, та повідомити про це користувача
-    let divInput=document.createElement("div");
-    let input=document.createElement("input");
-    let btn=document.createElement("button");
-    input.type="number"
-    btn.textContent='Перевірка'
-    document.body.appendChild(divInput)
-    divInput.append(input,btn)
-    btn.addEventListener('click',function (){
-        let inputText=input.value
-        if (inputText<18){
-            let divOut=document.createElement("div");
-            divOut.textContent=`Ви ще неповнолітній. Доступ обмежено.`
-            divInput.appendChild(divOut)
-        }else {
-            let noDiv=document.createElement("div");
-            noDiv.textContent=`Ви повнолітній. Доступ дозволено.`
-            divInput.appendChild(noDiv)
-        }
-    })
+    // let divInput=document.createElement("div");
+    // let input=document.createElement("input");
+    // let btn=document.createElement("button");
+    // input.type="number"
+    // btn.textContent='Перевірка'
+    // document.body.appendChild(divInput)
+    // divInput.append(input,btn)
+    // btn.addEventListener('click',function (){
+    //     let inputText=input.value
+    //     if (inputText<18){
+    //         let divOut=document.createElement("div");
+    //         divOut.textContent=`Ви ще неповнолітній. Доступ обмежено.`
+    //         divInput.appendChild(divOut)
+    //     }else {
+    //         let noDiv=document.createElement("div");
+    //         noDiv.textContent=`Ви повнолітній. Доступ дозволено.`
+    //         divInput.appendChild(noDiv)
+    //     }
+    // })
 
 
 
     // *** Створити 3 інпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.
     //     При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.
     // (Додатковачастина для завдання)
-    //
+
     // *** (подібне було вище, але...будьте уважні в другій частині) створити сторінку з довільним блоком, в середині якого є значення "100грн"
     // при перезавантаженні сторінки до значаення додається по 10грн, але !!!
     //     зміна ціни відбувається тільки на перезавантаження, які відбулись пізніше ніж 10 секунд після попереднього.

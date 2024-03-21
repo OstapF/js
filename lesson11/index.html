@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // - взяти https://dummyjson.com/docs/carts та вивести інформацію про всі корзини. Відобразити всі поля кожної корзини.
+    // fetch('https://dummyjson.com/carts')
+    //     .then(res => res.json())
+    //     .then(value => {
+    //         console.log(value)
+    //         let {products} = value;
+    //
+    //         let ul = document.createElement('ul');
+    //         for (const product of products) {
+    //             let li = document.createElement('li');
+    //             let span=document.createElement('span');
+    //             span.innerText=product.title+' ';
+    //             let p =document.createElement('p')
+    //
+    //             li.append(span,p)
+    //             ul.appendChild(li)
+    //         }
+    //         document.body.appendChild(ul)
+    //
+    //     });
+    // fetch('https://dummyjson.com/carts')
+    //     .then(res => res.json())
+    //     .then(value => {
+    //         console.log(value)
+    //         let {carts} = value
+    //         let ul = document.createElement('ul');
+    //         for (const cart of carts) {
+    //             let h3 = document.createElement('h3');
+    //             h3.innerText = 'Cart '+cart.id ;
+    //             ul.appendChild(h3);
+    //             cart.products.forEach(x => {
+    //                 let li = document.createElement('li');
+    //                 li.innerText = `${x.title} - ${x.price}`;
+    //                 ul.appendChild(li);
+    //             })
+    //         }
+    //         document.body.appendChild(ul)
+    //     });
+
+    //     - взяти https://dummyjson.com/docs/recipes та вивести інформацію про всі рецепти. Інгредієнти повинні бути список під час відображення.
+    // fetch('https://dummyjson.com/recipes')
+    //     .then(res => res.json())
+    //     .then(value => {
+    //         let {recipes}=value;
+    //         let ul = document.createElement('ul');
+    //
+    //         for (const recip of recipes) {
+    //             let h3 = document.createElement('h3');
+    //             h3.innerText =recip.name;
+    //             let h4 = document.createElement('h4');
+    //             h4.innerText =`Інгредієнти:`;
+    //             ul.append(h3,h4);
+    //             recip.ingredients.forEach(x=>{
+    //                 let li = document.createElement('li');
+    //                 li.innerText = x;
+    //                 ul.appendChild(li);
+    //             })
+    //
+    //         }
+    //
+    //         document.body.appendChild(ul)
+    //     });
+
+</script>
+</body>
+</html>

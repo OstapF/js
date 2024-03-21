@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    //     - зробити файл users.html
+    // з ендпоінту http://jsonplaceholder.typicode.com/users отримати всіх користувачів
+    //     вивести їх id + name списком та додати посилання з href = user-details.html?id=XXX (замість ХХХ - айді юзера)
+    // при кліку на посилання перехід на відповідну сторінку, на якій буде вся інформація про користувача (всі 15 полів)
+    // отримана через додатковий запит (https://jsonplaceholder.typicode.com/users/XXX   де ХХХ - айді користувача)
+    let userID = new URLSearchParams(window.location.search).get('id');
+
+    fetch(`https://jsonplaceholder.typicode.com/users/${userID}`)
+        .then(response => response.json())
+        .then(user => {
+            let div = document.createElement('div');
+            let ul = document.createElement('ul');
+            for (const key in user) {
+                let li = document.createElement('li');
+                if (typeof user[key] === 'object') {
+                    let ul2 = document.createElement('ul');
+                    for (const key2 in user[key]) {
+                        let li2 = document.createElement('li');
+                        if (typeof user[key][key2]==='object') {
+                            let ul3 = document.createElement('ul');
+                            for (const key3 in user[key][key2]) {
+                                let li3 = document.createElement('li')
+                                li3.textContent = `${key3}: ${user[key][key2][key3]}`
+                                ul3.appendChild(li3)
+                            }
+                            li2.textContent = `${key2}: `;
+                            li2.appendChild(ul3)
+                        } else {
+                            li2.textContent = `${key2}: ${user[key][key2]}`;
+                        }
+                        ul2.appendChild(li2)
+                    }
+                    li.textContent = `${key}: `;
+                    li.appendChild(ul2)
+                } else {
+                    li.textContent = `${key}: ${user[key]}`;
+                }
+                ul.appendChild(li)
+            }
+            div.appendChild(ul);
+            document.body.appendChild(div)
+
+        })
+</script>
+</body>
+</html>
