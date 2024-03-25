@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1 отримати масив об'єктів з endpoint`а https://jsonplaceholder.typicode.com/users
+    // 2 Вивести id,name всіх user в index.html. Окремий блок для кожного user.
+    // 3 Додати кожному блоку кнопку/посилання , при кліку на яку відбувається перехід
+    // на сторінку user-details.html, котра має детальну інфорацію про об'єкт на який клікнули
+    fetch('http://jsonplaceholder.typicode.com/users')
+        .then(res => res.json())
+        .then(users => {
+            let div = document.createElement('div');
+            for (const user of users) {
+                let h3 = document.createElement('h3');
+                h3.innerText = user.id + ". " + user.name
+                let button = document.createElement('button');
+                button.innerText = 'Детальна інформація';
+                button.addEventListener("click", () => {
+                    window.location.href = `user-details.html?id=${user.id}`;
+                })
+                div.append(h3, button)
+            }
+            document.body.appendChild(div)
+        });
+
+
+</script>
+
+
+</body>
+</html>
